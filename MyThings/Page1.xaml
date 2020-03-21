@@ -7,132 +7,20 @@
              x:Class="MyThings.Page1">
     <ContentPage.Content>
         <StackLayout>
-            <Picker Title="Select a Channel" x:Name="channel_picker" SelectedIndexChanged= "Handle_picker" />
-
-            
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Label Text="Tên Channel:"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand"
-                       TextColor="Red"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       Grid.Column="0"
-                       Grid.Row="0"/>
-                <Label Text=""
-
-                 x:Name="channel_name"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       Grid.Column="1"
-                       Grid.Row="0"/>
-                <Label Text="Trạng thái:"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand"
-                       TextColor="Red"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       Grid.Column="0"
-                       Grid.Row="1"/>
-                <Label 
-
-                 x:Name="status_text"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       Grid.Column="1"
-                       Grid.Row="1"/>
-                <Label 
-                x:Name="temperature_text"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       TextColor="Blue"
-                       Grid.Column="0"
-                       Grid.Row="2"/>
-                <Label x:Name="temperature"
-
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       Grid.Column="1"
-                       Grid.Row="2"/>
-
-                <Label 
-                    x:Name="ph_text"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       TextColor="Blue"
-                       Grid.Column="0"
-                       Grid.Row="3"/>
-                <Label x:Name="pH"
-
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       Grid.Column="1"
-                       Grid.Row="3"/>
-
-                <Label 
-                    x:Name="turb_text"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       TextColor="Blue"
-                       Grid.Column="0"
-                       Grid.Row="4"/>
-                <Label x:Name="turb"
-
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="23"
-                       Grid.Column="1"
-                       Grid.Row="4"/>
+            <Label  
+               x:Name="scanning_status"
+                HorizontalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="17"
+           VerticalOptions="CenterAndExpand" />
+            <Label  
+               x:Name="scanning_result"
+                HorizontalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="17"
+           VerticalOptions="CenterAndExpand" />
 
 
-                <Label x:Name="update_text"
-                
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="20"
-                       TextColor="Blue"
-                       Grid.Column="0"
-                       Grid.Row="5"/>
-                <Label x:Name="update_time"
-
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Bold"
-                       FontSize="20"
-                       Grid.Column="1"
-                       Grid.Row="5"/>
-
-            </Grid>
-            
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
