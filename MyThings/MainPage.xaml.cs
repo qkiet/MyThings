@@ -34,7 +34,7 @@ namespace MyThings
         async void Handle_Clicked(object sender, EventArgs e)
         {
             status.Text = "new page";
-            await Navigation.PushAsync(new Page1());
+            await Navigation.PushAsync(new Page1(username_text.Text, pass_text.Text));
 
 
             //var connect = Connectivity.NetworkAccess;

@@ -22,12 +22,15 @@ namespace MyThings
     public partial class Page1 : ContentPage
     {
 
-        private const string MyTopic = "test-topic";
+        private const string topic_scan_device = "MyThings/devices/scan";
+        private const string topic_device_ack = "MyThings/devices/ack";
         private const string MQTTServerUrl = "broker.hivemq.com";
         private const int MQTTPort = 1883;
+        public string username;
+        public string pass;
         int number_of_devices = 0;
         public List<UserProfile> myprofile;
-        public Page1()
+        public Page1(string typed_username, string typed_pass)
         {
             InitializeComponent();
             //scanning_status.Text = "New Page";
@@ -40,36 +43,47 @@ namespace MyThings
 
             var options = new MqttClientOptionsBuilder()
             .WithTcpServer(MQTTServerUrl, MQTTPort)
+            .WithCredentials(username, pass)
             .Build();
 
 
             mqttClient.UseApplicationMessageReceivedHandler(ee =>
             {
-                number_of_devices++;
+                
                 string payload = Encoding.UTF8.GetString(ee.ApplicationMessage.Payload);
-                if (payload == "ACK")
+                string[] elements = payload.Split(' ');
 
-                MainThread.BeginInvokeOnMainThread(() => scanning_result.Text = $"found {number_of_devices} devices");
+                if (elements[0] == "DACK")
+                {
+                    number_of_devices++;
+                    for (int i = 3; i < elements.Length; i++)
+                    {
+
+                    }
+                }
 
             });
-            //// Connected event handler
+            //// Subcribe to device ack topic first
             mqttClient.UseConnectedHandler(async ee =>
             {
-                MainThread.BeginInvokeOnMainThread(() => scanning_status.Text = "Connected");
                 // Subscribe to a topic
-                await mqttClient.SubscribeAsync(new TopicFilterBuilder().WithTopic(MyTopic).Build());
-                MainThread.BeginInvokeOnMainThread(() => scanning_status.Text = "Subscribed");
+                await mqttClient.SubscribeAsync(new TopicFilterBuilder().WithTopic(topic_device_ack).Build());
+
             });
 
 
             //// Try to connect to MQTT server
             await mqttClient.ConnectAsync(options, CancellationToken.None);
-            await Task.Delay(9000); //how many milisecond application will scan
-            scanning_status.Text = "Done";
-            mqttClient.UseApplicationMessageReceivedHandler(ee =>
-            {
 
-            }); //stop handlimng message
+            var message = new MqttApplicationMessageBuilder()
+                .WithTopic(topic_scan_device)
+                .WithPayload("HELLO?")
+                .Build();
+            await mqttClient.PublishAsync(message);
+            scanning_status.Text = "Scanning...";
+            await Task.Delay(15000);
+            scanning_status.Text = "Done!";
+            mqttClient.UseApplicationMessageReceivedHandler(ee => { });
         }
 
 

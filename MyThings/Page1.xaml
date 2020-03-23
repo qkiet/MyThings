@@ -19,6 +19,20 @@
                 FontAttributes="Bold"
                 FontSize="17"
            VerticalOptions="CenterAndExpand" />
+            <TableView Intent="Form"
+                   Margin="10, 0">
+                <TableRoot>
+                    <TableSection>
+                        <TextCell Text="Text Cell"
+                              Detail="With Detail Text" />
+                    </TableSection>
+                    <TableSection>
+                        <TextCell Text="Text Cell"
+                              Detail="With Detail Text" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
 
 
         </StackLayout>
